@@ -1,0 +1,2 @@
+export { Gyms } from './gyms'
+
