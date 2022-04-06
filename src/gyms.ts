@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from "axios";
 import { API_URL } from "./common/urls";
-import { ILocation } from "./interfaces/smart-fit-representations";
-import { ILocationAddOns, IPage } from "./interfaces/smart-fit-representations/location";
+import { ILocation, IPagination } from "./interfaces/smart-fit-representations";
+import { ILocationAddOns } from "./interfaces/smart-fit-representations/location";
 import { Gym } from "./models/gym";
 import { IAdditionalInformation } from "./interfaces/igym";
 import he from "he"
@@ -34,7 +34,7 @@ export abstract class Gyms {
         let page = 1
 
         //Recupera a primeira página
-        let response = await axios.get<IPage>(`${API_URL}/academias.json?name=&page=${page}`)
+        let response = await axios.get<IPagination>(`${API_URL}/academias.json?name=&page=${page}`)
 
         let data = response.data
         locations.push(...data.locations)
@@ -44,9 +44,9 @@ export abstract class Gyms {
         this.verbose(`Creating ${max_pages + 1} requests.`)
 
         //Cria as tasks
-        let tasks: Promise<AxiosResponse<IPage, any>>[] = []
+        let tasks: Promise<AxiosResponse<IPagination, any>>[] = []
         for (page = 2; page <= max_pages; page++)
-            tasks.push(axios.get<IPage>(`${API_URL}/academias.json?name=&page=${page}`))
+            tasks.push(axios.get<IPagination>(`${API_URL}/academias.json?name=&page=${page}`))
 
         let responses = await Promise.all(tasks);
 

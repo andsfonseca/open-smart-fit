@@ -4,7 +4,7 @@ This library was created in order to retrieve information about Smart Fit gyms
 
 ## What is?
 
-Um pacote com a listagem de todas as academias da "Smart Fit" recuperadas do site "smartfit.com.br". Este aplicativo funciona corretamente com a versão do site obtida em 2022-04-04.
+A package listing all the "Smart Fit" gyms retrieved from the [smartfit.com.br website](https://www.smartfit.com.br/). This app works correctly with the website version obtained on 2022-04-04.
 
 ## Installation (Not yet)
 
@@ -34,7 +34,9 @@ import { Gyms } from '@andsfonseca/open-smart-fit'
 
 * #### getRawData ()
 
-Description
+Retrieves Smartfit JSON with a list of Gym locations including their general information.
+
+Returns a list of gyms in the standard format of Smartfit.com.br [ILocation](#ilocation)
 
 ```ts
 let locations: ILocations[] = await Gyms.getRawData()
@@ -42,49 +44,57 @@ let locations: ILocations[] = await Gyms.getRawData()
 
 ### Interfaces
 
-* ### ILocation
+* ### Smart Fit Json Models
 
-Description
+    These are the interfaces generated from the JSON retrieved from the [smartfit.com.br website](https://www.smartfit.com.br/) 
 
-```ts
-interface IWordleValidation {
-    word: string,
-    contains: boolean,
-    exact: boolean
-}
-```
-|       Propriedade    |    Descrição            |
-|:--------------------:|:-------------------------:|
-| word                 | Letra.       | 
-| contains             | Se a letra está na palavra. |
-| exact                | Se a letra está na posição correta. |
+    * ### IPagination
 
-* ### ILocationPicture
+    Gym search page information
 
-Information from the images of a particular gym
+    ```ts
+    interface IPagination {
+        locations: ILocation[]
+        locations_count: number
+        next_page?: number
+        view_type: string
+    }
+    ```
 
-```ts
-export interface ILocationPicture {
-    id: number
-    location_id: number
-    caption: string
-    image_url: string
-    smart_system_id: number
-    created_at: string
-    updated_at: string
-    current_shard: string
-}
-```
-|    Propriedade   |         Descrição        |
-|:----------------:|:------------------------:|
-| id               | Image identifier.        | 
-| location_id      | Academy identifier.      |
-| caption          | Image subtitle.          |
-| image_url        | image URL.               |
-| smart_system_id  | Smart System Identifier. |
-| created_at       | Creation date.           |
-| updated_at       | Update date.             |
-| current_shard    | fragment information.    |
+    |    Property      |                           Description                             |
+    |:----------------:|:-----------------------------------------------------------------:|
+    | locations        | Array with the information about the gyms. (Usually 8 per page)   | 
+    | locations_count  | Number of gyms                                                    |
+    | next_page        | Next page number                                                  |
+    | view_type        | Type of visualization used in the front-end of the website        |
+
+    * ### ILocationPicture
+
+    Information from the images of a particular gym
+
+    ```ts
+    interface ILocationPicture {
+        id: number
+        location_id: number
+        caption: string
+        image_url: string
+        smart_system_id: number
+        created_at: string
+        updated_at: string
+        current_shard: string
+    }
+    ```
+
+    |    Property      |        Description       |
+    |:----------------:|:------------------------:|
+    | id               | Image identifier.        | 
+    | location_id      | Academy identifier.      |
+    | caption          | Image subtitle.          |
+    | image_url        | image URL.               |
+    | smart_system_id  | Smart System Identifier. |
+    | created_at       | Creation date.           |
+    | updated_at       | Update date.             |
+    | current_shard    | fragment information.    |
 
 ## Data Cleaning
 

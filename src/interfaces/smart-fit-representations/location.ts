@@ -1,12 +1,5 @@
 import { ILocationPicture } from "./location-picture"
 
-export interface IPage {
-    locations: any[]
-    locations_count: number
-    next_page?: number
-    view_type: string
-}
-
 interface ICoordinates {
     latitude: string,
     longitude: string
