@@ -59,6 +59,33 @@ interface IWordleValidation {
 | contains             | Se a letra está na palavra. |
 | exact                | Se a letra está na posição correta. |
 
+* ### ILocationPicture
+
+Information from the images of a particular gym
+
+```ts
+export interface ILocationPicture {
+    id: number
+    location_id: number
+    caption: string
+    image_url: string
+    smart_system_id: number
+    created_at: string
+    updated_at: string
+    current_shard: string
+}
+```
+|    Propriedade   |         Descrição        |
+|:----------------:|:------------------------:|
+| id               | Image identifier.        | 
+| location_id      | Academy identifier.      |
+| caption          | Image subtitle.          |
+| image_url        | image URL.               |
+| smart_system_id  | Smart System Identifier. |
+| created_at       | Creation date.           |
+| updated_at       | Update date.             |
+| current_shard    | fragment information.    |
+
 ## Data Cleaning
 
 To ignore unnecessary and useless information, attributes are rearranged to a more appropriate format, including more convenient information.
@@ -69,6 +96,7 @@ Each information is represented as general or additional. General information is
 |:--------------------:|:-------------------------:|:-----------:|
 | id                 | general       | ✅ Yes.       | 
 | cnpj                 | additional       | ✅ Yes.       | 
+| imagesUri                 | additional       | ✅ Yes.       | 
 
 ## Issues
 

@@ -31,5 +31,6 @@ export default interface IGym{
 
 export interface IAdditionalInformation{
     cnpj : string
+    imagesUri: string[]
 }
 

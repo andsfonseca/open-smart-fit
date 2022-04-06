@@ -1,6 +1,7 @@
 import axios, { AxiosResponse } from "axios";
 import { API_URL } from "./common/urls";
-import { ILocation, ILocationAddOns, IPage } from "./interfaces/smart-fit-json";
+import { ILocation } from "./interfaces/smart-fit-representations";
+import { ILocationAddOns, IPage } from "./interfaces/smart-fit-representations/location";
 import { Gym } from "./models/gym";
 import { IAdditionalInformation } from "./interfaces/igym";
 import he from "he"
@@ -10,10 +11,21 @@ import he from "he"
  */
 export abstract class Gyms {
 
+    /**
+     * Método usado para envio de Logs
+     * @param _ Texto do Log
+     */
     public static verbose: (s: string) => void = (_: string) => { }
 
+    /**
+     * Dicionário com os dados extraídos da Smartfit.com.br, o permalink é a chave e seu valor é uma entidade 'Gym'
+     */
     private static data: { [index: string]: Gym };
 
+    /**
+     * Recupera o JSON da Smartfit com uma lista de localizações da Academias, incluindo suas informações gerais
+     * @returns Retorna uma lista de academias no formato padrão da Smartfit.com.br
+     */
     static async getRawData(): Promise<ILocation[]> {
 
         this.verbose("Retrieving general information...")
@@ -148,7 +160,8 @@ export abstract class Gyms {
         this.verbose(`Optimizing data...`)
 
         this.data[permalink].additionalInformation = {
-            cnpj: data.cnpj
+            cnpj: data.cnpj,
+            imagesUri: data.locationPictures.map( lp => lp.image_url)
         }
 
         return this.data[permalink].additionalInformation;

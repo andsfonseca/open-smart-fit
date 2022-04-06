@@ -15,6 +15,7 @@ export class Gym implements IGym {
     additionalInformation?: IAdditionalInformation
     
     cnpj!: Promise<string>;
+    imagesUri!: Promise<string[]>;
     
     constructor(name: string, permalink: string, id: number, smartSystemId: number, address: IAddress, facilities: string[], schedules: ISchedule[], prices: IPrice[], plans: string[]) {
         
@@ -33,11 +34,21 @@ export class Gym implements IGym {
                 if(this.additionalInformation){
                     return this.additionalInformation.cnpj
                 }
-                
                 await Gyms.getGymAdditionalProperties(this.permalink)
 
                 return this.additionalInformation.cnpj
 
+            }
+         });
+
+         Object.defineProperty(this, "imagesUri",{
+            get: async function (){
+                if(this.additionalInformation){
+                    return this.additionalInformation.imagesUri
+                }
+                await Gyms.getGymAdditionalProperties(this.permalink)
+
+                return this.additionalInformation.imagesUri
             }
          });
     }

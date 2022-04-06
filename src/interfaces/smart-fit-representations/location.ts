@@ -1,3 +1,4 @@
+import { ILocationPicture } from "./location-picture"
 
 export interface IPage {
     locations: any[]
@@ -62,17 +63,6 @@ export interface ILocation {
     sales_available: boolean,
     plan_names: any[],
     is_digital: boolean
-}
-
-interface ILocationPicture {
-    id: number
-    location_id: number
-    caption: string
-    image_url: string
-    smart_system_id: number
-    created_at: string
-    updated_at: string
-    current_shard: string
 }
 
 export interface ITrainer {
