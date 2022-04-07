@@ -1,13 +1,7 @@
 import { IAddress } from "./address"
+import { IFacility } from "./facility"
 import { ILocationPicture } from "./location-picture"
 import { IPrice } from "./price"
-
-interface IFacility {
-    id: number,
-    name: string,
-    description: string,
-    icon_svg_slug: string
-}
 
 interface ITableDay {
     table: ITableDayItem
