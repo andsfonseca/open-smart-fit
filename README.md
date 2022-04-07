@@ -73,7 +73,7 @@ let locations: ILocations[] = await Gyms.getRawData()
     Gym plan pricing information
 
     ```ts
-    export interface IPrice {
+    interface IPrice {
         integer: number,
         decimal: string,
         value: number,
@@ -87,6 +87,40 @@ let locations: ILocations[] = await Gyms.getRawData()
     | decimal         | Monthly fee in decimal              |
     | value           | Monthly fee                         |
     | original_price  | Original monthly fee in Real (R$)   |
+
+    * ### IAddress
+
+    Address information
+
+    ```ts
+    interface IAddress {
+        first_line: string,
+        second_line: string,
+        position: ICoordinates
+    }
+    ```
+
+    |    Property     |                           Description                       |
+    |:---------------:|:-----------------------------------------------------------:|
+    | first_line      | First line of the address (Street, number and neighborhood) | 
+    | second_line     | Second line of address (City, state, zip code)              |
+    | position        | Geographic coordinates                                      |
+
+    * ### ICoordinates
+
+    Geographic coordinate information,
+
+    ```ts
+    interface ICoordinates {
+        latitude: string,
+        longitude: string
+    }
+    ```
+
+    |    Property     |  Description  |
+    |:---------------:|:-------------:|
+    | latitude        | Latitude      | 
+    | longitude       | Longitude     |
 
     * ### ILocationPicture
 
@@ -126,6 +160,7 @@ Each information is represented as general or additional. General information is
 |:--------------------:|:-------------------------:|:-----------:|
 | id                 | general       | ✅ Yes.       | 
 | price                 | general       | ✅ Yes.       | 
+| address                 | general       | ✅ Yes.       | 
 | cnpj                 | additional       | ✅ Yes.       | 
 | imagesUri                 | additional       | ✅ Yes.       | 
 

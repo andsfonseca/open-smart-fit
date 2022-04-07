@@ -1,16 +1,6 @@
+import { IAddress } from "./address"
 import { ILocationPicture } from "./location-picture"
 import { IPrice } from "./price"
-
-interface ICoordinates {
-    latitude: string,
-    longitude: string
-}
-
-interface IAddress {
-    first_line: string,
-    second_line: string,
-    position: ICoordinates
-}
 
 interface IFacility {
     id: number,
