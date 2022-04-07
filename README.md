@@ -21,7 +21,7 @@ npm i @andsfonseca/open-smart-fit
 To perform the import via Javascript
 
 ```js
-var Word = require('@andsfonseca/open-smart-fit').Gyms;
+var Gyms = require('@andsfonseca/open-smart-fit').Gyms;
 ```
 
 To perform the import via Typescript
@@ -68,6 +68,26 @@ let locations: ILocations[] = await Gyms.getRawData()
     | next_page        | Next page number                                                  |
     | view_type        | Type of visualization used in the front-end of the website        |
 
+    * ### IPrice
+
+    Gym plan pricing information
+
+    ```ts
+    export interface IPrice {
+        integer: number,
+        decimal: string,
+        value: number,
+        original_price: string
+    }
+    ```
+
+    |    Property     |           Description               |
+    |:---------------:|:-----------------------------------:|
+    | integer         | Monthly fee in integer              | 
+    | decimal         | Monthly fee in decimal              |
+    | value           | Monthly fee                         |
+    | original_price  | Original monthly fee in Real (R$)   |
+
     * ### ILocationPicture
 
     Information from the images of a particular gym
@@ -105,6 +125,7 @@ Each information is represented as general or additional. General information is
 |       Property    |    Type            |    Implemented            |
 |:--------------------:|:-------------------------:|:-----------:|
 | id                 | general       | ✅ Yes.       | 
+| price                 | general       | ✅ Yes.       | 
 | cnpj                 | additional       | ✅ Yes.       | 
 | imagesUri                 | additional       | ✅ Yes.       | 
 

@@ -1,4 +1,5 @@
 import { ILocationPicture } from "./location-picture"
+import { IPrice } from "./price"
 
 interface ICoordinates {
     latitude: string,
@@ -27,21 +28,9 @@ interface ITableDayItem {
     time: string
 }
 
-interface IPrice {
-    integer: number,
-    decimal: string,
-    value: number,
-    original_price: string
-}
-
-interface SmartAndBlackPrice {
-    smart: IPrice
-    black: IPrice
-}
-
 export interface ILocation {
     name: string
-    prices: SmartAndBlackPrice
+    prices: { [index: string]: IPrice }
     distance: string,
     upcoming_holiday: any,
     permalink: string,
@@ -49,7 +38,7 @@ export interface ILocation {
     activities: [],
     facilities: IFacility[],
     promotion: any,
-    schedules: { [name: string]: ITableDay[] },
+    schedules: { [index: string]: ITableDay[] },
     smart_system_id: number,
     picture_url: string,
     id: number,
