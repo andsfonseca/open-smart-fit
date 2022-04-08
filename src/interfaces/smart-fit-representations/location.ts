@@ -2,15 +2,7 @@ import { IAddress } from "./address"
 import { IFacility } from "./facility"
 import { ILocationPicture } from "./location-picture"
 import { IPrice } from "./price"
-
-interface ITableDay {
-    table: ITableDayItem
-}
-
-interface ITableDayItem {
-    weekday: string,
-    time: string
-}
+import { IScheduledDays } from "./scheduled-day"
 
 export interface ILocation {
     name: string
@@ -22,7 +14,7 @@ export interface ILocation {
     activities: [],
     facilities: IFacility[],
     promotion: any,
-    schedules: { [index: string]: ITableDay[] },
+    schedules: { [index: string]: IScheduledDays[] },
     smart_system_id: number,
     picture_url: string,
     id: number,

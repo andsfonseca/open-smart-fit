@@ -142,9 +142,39 @@ let locations: ILocations[] = await Gyms.getRawData()
     | description      | Feature description.      |
     | icon_svg_slug    | Resource icon identifier. |
 
+    * ### IScheduledDays
+
+    Gym opening hours for each day of the week.
+
+    ```ts
+    interface IScheduledDays {
+        table: IScheduledDayItem
+    }
+    ```
+
+    |  Property  |   Description  |
+    |:----------:|:--------------:|
+    | table      | Opening hours. | 
+
+    * ### IScheduledDayItem
+
+    Representation of opening hours.
+
+    ```ts
+    interface IScheduledDayItem {
+        weekday: string,
+        time: string
+    }
+    ```
+
+    |    Property    |                     Description                   |
+    |:--------------:|:-------------------------------------------------:|
+    | weekday        | Day of the week.                                  | 
+    | time           | Opening and closing times separated by a hyphen.  |
+
     * ### ILocationPicture
 
-    Information from the images of a particular gym
+    Information from the images of a particular gym.
 
     ```ts
     interface ILocationPicture {
@@ -182,6 +212,7 @@ Each information is represented as general or additional. General information is
 | price                 | general       | ✅ Yes.       | 
 | address                 | general       | ✅ Yes.       | 
 | facilities                 | general       | ✅ Yes.       | 
+| schedules                 | general       | ✅ Yes.       | 
 | cnpj                 | additional       | ✅ Yes.       | 
 | imagesUri                 | additional       | ✅ Yes.       | 
 
