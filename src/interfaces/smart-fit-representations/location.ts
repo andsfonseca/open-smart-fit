@@ -4,22 +4,73 @@ import { ILocationPicture } from "./location-picture"
 import { IPrice } from "./price"
 import { IScheduledDays } from "./scheduled-day"
 
+/**
+ * Representação de uma academia
+ */
 export interface ILocation {
+    /**
+     * Nome da Academia
+     */
     name: string
+    /**
+     * Preços da Academia
+     */
     prices: { [index: string]: IPrice }
+    /**
+     * Distancia em metros em relação a coordenada de Busca
+     */
     distance: string,
+    /**
+     * Informações de feriado
+     */
     upcoming_holiday: any,
+    /**
+     * Identificador único da acamdemia, em string
+     */
     permalink: string,
+    /**
+     * Endereço da Academia
+     */
     address: IAddress,
+    /**
+     * Atividades encontradas na academia
+     */
     activities: [],
+    /**
+     * Recursos disponíveis na academia
+     */
     facilities: IFacility[],
+    /**
+     * Promoções da academia
+     */
     promotion: any,
+    /**
+     * Horários da academia
+     */
     schedules: { [index: string]: IScheduledDays[] },
+    /**
+     * Identificador do Smart System
+     */
     smart_system_id: number,
+    /**
+     * URI com imagem da academia
+     */
     picture_url: string,
+    /**
+     * Identificador da academia
+     */
     id: number,
+    /**
+     * Está aberto para vendas
+     */
     sales_available: boolean,
+    /**
+     * Planos disponíveis
+     */
     plan_names: any[],
+    /**
+     * Possui plano diginal
+     */
     is_digital: boolean
 }
 

@@ -1,0 +1,1 @@
+export { IGym } from "./models/igym"

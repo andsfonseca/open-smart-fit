@@ -1,5 +1,6 @@
 import { Gyms } from "../gyms";
-import IGym, { IAddress, ISchedule, IPrice, IAdditionalInformation } from "../interfaces/igym";
+import { IGym } from "../interfaces/models";
+import { IAddress, ISchedule, IPrice, IAdditionalInformation } from "../interfaces/models/igym";
 
 export class Gym implements IGym {
 

@@ -16,7 +16,7 @@ export interface IPrice{
     price: number
 }
 
-export default interface IGym{
+export interface IGym{
     name: string
     permalink: string
     id: number
