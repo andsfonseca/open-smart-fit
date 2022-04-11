@@ -1,13 +1,4 @@
 "use strict";
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Gym = void 0;
 const gyms_1 = require("../gyms");
@@ -23,14 +14,21 @@ class Gym {
         this.prices = prices;
         this.plans = plans;
         Object.defineProperty(this, "cnpj", {
-            get: function () {
-                return __awaiter(this, void 0, void 0, function* () {
-                    if (this.additionalInformation) {
-                        return this.additionalInformation.cnpj;
-                    }
-                    yield gyms_1.Gyms.getGymAdditionalProperties(this.permalink);
+            get: async function () {
+                if (this.additionalInformation) {
                     return this.additionalInformation.cnpj;
-                });
+                }
+                await gyms_1.Gyms.getGymAdditionalProperties(this.permalink);
+                return this.additionalInformation.cnpj;
+            }
+        });
+        Object.defineProperty(this, "imagesUri", {
+            get: async function () {
+                if (this.additionalInformation) {
+                    return this.additionalInformation.imagesUri;
+                }
+                await gyms_1.Gyms.getGymAdditionalProperties(this.permalink);
+                return this.additionalInformation.imagesUri;
             }
         });
     }
