@@ -98,7 +98,15 @@ describe("Models", () => {
         } catch (e) {
             console.log(e)
         }
-
     }, 100000)
-    
+
+    test("Get address property", async () => {
+        let gym = Object.values(await Gyms.getData())[0]
+        expect(gym.address).not.toBeUndefined()
+        expect(gym.address.lat).not.toBeUndefined()
+        expect(gym.address.lon).not.toBeUndefined()
+        expect(gym.address.full).not.toBeUndefined()
+        expect(gym.address.postalCode).not.toBeUndefined()
+    })
+
 })

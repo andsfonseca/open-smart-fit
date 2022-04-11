@@ -1,9 +1,4 @@
-export interface IAddress{
-    lat: string,
-    lon: string,
-    full: string,
-    postalCode: string
-}
+import { IAddress } from "./iaddress"
 
 export interface ISchedule{
     dayOfTheWeek: number

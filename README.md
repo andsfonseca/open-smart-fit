@@ -59,6 +59,16 @@ Returns a list of gyms in the standard format of Smartfit.com.br [ILocation](#il
 let locations: ILocations[] = await Gyms.getRawData()
 ```
 
+* #### getData ()
+
+Recover a set of Smartfit gyms.
+
+Returns a dictionary of gyms identified by their `permalink` including a [Gym](#gym)
+
+```ts
+let gyms: [index: string]: Gym } = await Gyms.getData()
+```
+
 ### Interfaces
 
 * ### Smart Fit Json Models
@@ -260,6 +270,30 @@ let locations: ILocations[] = await Gyms.getRawData()
     | created_at       | Creation date.           |
     | updated_at       | Update date.             |
     | current_shard    | fragment information.    |
+
+* ### Refactored models
+
+    These interfaces were created from the extracted data, they contain a leaner representation of the data
+
+    * ### IAddress
+
+    Address information.
+
+    ```ts
+    interface IAddress{
+        lat: string,
+        lon: string,
+        full: string,
+        postalCode: string
+    }
+    ```
+
+    |  Property   |                           Description                         |
+    |:-----------:|:-------------------------------------------------------------:|
+    | lat         | Latitude.                                                     | 
+    | lon         | Longitude.                                                    |
+    | full        | Complete Address (Street, number, neighborhood, City, State). |
+    | postalCode  | Zip code.                                                     |
 
 ## Issues
 
