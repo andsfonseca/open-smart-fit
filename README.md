@@ -14,6 +14,23 @@ Install the package from the [npmjs.com](npmjs.com) repository.
 npm i @andsfonseca/open-smart-fit
 ```
 
+## Data Cleaning
+
+To ignore unnecessary and useless information, attributes are rearranged to a more appropriate format, including more convenient information.
+
+Each information is represented as general or additional. General information is always retrieved and additional information only if the user requests it externally.
+
+|       Property    |    Type            |    Implemented            |
+|:--------------------:|:-------------------------:|:-----------:|
+| id                 | general       | ✅ Yes.       | 
+| price                 | general       | ✅ Yes.       | 
+| address                 | general       | ✅ Yes.       | 
+| facilities                 | general       | ✅ Yes.       | 
+| schedules                 | general       | ✅ Yes.       | 
+| cnpj                 | additional       | ✅ Yes.       | 
+| imagesUri                 | additional       | ✅ Yes.       | 
+
+
 ## Usage
 
 ### Importation
@@ -243,22 +260,6 @@ let locations: ILocations[] = await Gyms.getRawData()
     | created_at       | Creation date.           |
     | updated_at       | Update date.             |
     | current_shard    | fragment information.    |
-
-## Data Cleaning
-
-To ignore unnecessary and useless information, attributes are rearranged to a more appropriate format, including more convenient information.
-
-Each information is represented as general or additional. General information is always retrieved and additional information only if the user requests it externally.
-
-|       Property    |    Type            |    Implemented            |
-|:--------------------:|:-------------------------:|:-----------:|
-| id                 | general       | ✅ Yes.       | 
-| price                 | general       | ✅ Yes.       | 
-| address                 | general       | ✅ Yes.       | 
-| facilities                 | general       | ✅ Yes.       | 
-| schedules                 | general       | ✅ Yes.       | 
-| cnpj                 | additional       | ✅ Yes.       | 
-| imagesUri                 | additional       | ✅ Yes.       | 
 
 ## Issues
 

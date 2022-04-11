@@ -62,13 +62,20 @@ export abstract class Gyms {
         return locations
     }
 
+    /**
+     * Recupera um conjunto de academias da Smartfit
+     * @returns Retorna um dicionário de academias identificadas por seu `permalink`
+     */
     static async getData(): Promise<{ [index: string]: Gym }> {
 
+        //Verifica se os dados já foram salvos algumas vez
         if (this.data)
             return this.data;
 
+        //Requisita as localizações
         let locations = await this.getRawData()
 
+        //Auxilar de Dias da Semana para Index
         let stringToDay: { [name: string]: number } = {
             "Dom/Feriados": 1,
             "Seg": 2,
@@ -81,8 +88,10 @@ export abstract class Gyms {
 
         this.verbose(`Optimizing data...`)
 
+        //Para cada localização
         let gyms = locations.map(l => {
 
+            //Extrai o endereço
             let fullAdress = `${l.address.first_line} - ${l.address.second_line}`
             let postalCode = fullAdress.match(/(\d+)\D*$/)![0].toString();
             let fullAdressWithoutPostalCode = fullAdress.substring(0, fullAdress.length - (postalCode.length + 3));
@@ -97,26 +106,32 @@ export abstract class Gyms {
                     full: fullAdressWithoutPostalCode,
                     postalCode: postalCode
                 },
+                //Mapeia as facilidades
                 l.facilities.map(lf => lf.name),
+                //Mapeias os horários
                 Object.values(l.schedules).map(s => {
                     let day = stringToDay[s[0].table.weekday]
                     let arrMatch = s[0].table.time.match(/[0-9]+/g);
                     return { dayOfTheWeek: day, opensAs: parseInt(arrMatch![0].toString()), closesAs: parseInt(arrMatch![1].toString()) }
-                }), [
-                { name: "smart-original-price", price: parseFloat(l.prices.smart.original_price.replace(",", ".")) },
+                }),
+                // Mapeia os preços
+                [{ name: "smart-original-price", price: parseFloat(l.prices.smart.original_price.replace(",", ".")) },
                 { name: "smart-promotional-price", price: l.prices.smart.value },
                 { name: "black-original-price", price: parseFloat(l.prices.black.original_price.replace(",", ".")) },
                 { name: "black-promotional-price", price: l.prices.black.value },
-            ], l.plan_names)
+                ],
+                l.plan_names)
 
         })
 
         this.data = {}
 
+        //Para cada localização, escreve no dicionário
         for (let index = 0; index < gyms.length; index++) {
             this.data[gyms[index].permalink] = gyms[index]
         }
 
+        //Retorna as academias
         return this.data
 
     }
@@ -161,7 +176,7 @@ export abstract class Gyms {
 
         this.data[permalink].additionalInformation = {
             cnpj: data.cnpj,
-            imagesUri: data.locationPictures.map( lp => lp.image_url)
+            imagesUri: data.locationPictures.map(lp => lp.image_url)
         }
 
         return this.data[permalink].additionalInformation;

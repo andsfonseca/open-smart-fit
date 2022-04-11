@@ -89,3 +89,16 @@ describe("Parsing Smart Fit Raw JSON", () => {
     })
 
 })
+
+describe("Models", () => {
+
+    test("Fetching data", async () => {
+        try {
+            expect(await Gyms.getData()).not.toBeUndefined()
+        } catch (e) {
+            console.log(e)
+        }
+
+    }, 100000)
+    
+})
