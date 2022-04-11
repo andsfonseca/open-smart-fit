@@ -68,6 +68,50 @@ let locations: ILocations[] = await Gyms.getRawData()
     | next_page        | Next page number.                                                 |
     | view_type        | Type of visualization used in the front-end of the website.       |
 
+    * ### ILocation
+
+    Representation of an gym.
+
+    ```ts
+    interface ILocation {
+        name: string
+        prices: { [index: string]: IPrice }
+        distance: string,
+        upcoming_holiday: any,
+        permalink: string,
+        address: IAddress,
+        activities: [],
+        facilities: IFacility[],
+        promotion: any,
+        schedules: { [index: string]: IScheduledDays[] },
+        smart_system_id: number,
+        picture_url: string,
+        id: number,
+        sales_available: boolean,
+        plan_names: any[],
+        is_digital: boolean
+    }
+    ```
+
+    |    Property      |                    Description                     |
+    |:----------------:|:--------------------------------------------------:|
+    | name             | gym name.                                          | 
+    | prices           | gym prices.                                        |
+    | distance         | Distance in meters from the search coordinate.     |
+    | upcoming_holiday | holiday information.                               |
+    | permalink        | Unique identifier of the gym, in string.           |
+    | address          | Gym address.                                       |
+    | activities       | Activities found at the gym.                       |
+    | facilities       | Resources available at the gym.                    |
+    | promotion        | Gym promotions.                                    |
+    | schedules        | Gym hours.                                         |
+    | smart_system_id  | Smart System Identifier.                           |
+    | picture_url      | URI with gym image.                                |
+    | id               | Gym identifier.                                    |
+    | sales_available  | It's open for sales.                               |
+    | plan_names       | Available plans.                                   |
+    | is_digital       | Has a digital plan.                                |
+
     * ### IPrice
 
     Gym plan pricing information.
@@ -124,7 +168,7 @@ let locations: ILocations[] = await Gyms.getRawData()
 
     * ### IFacility
 
-    Resources available at the academy.
+    Resources available at the gym.
 
     ```ts
     interface IFacility {
@@ -192,7 +236,7 @@ let locations: ILocations[] = await Gyms.getRawData()
     |    Property      |        Description       |
     |:----------------:|:------------------------:|
     | id               | Image identifier.        | 
-    | location_id      | Academy identifier.      |
+    | location_id      | Gym identifier.          |
     | caption          | Image subtitle.          |
     | image_url        | image URL.               |
     | smart_system_id  | Smart System Identifier. |
