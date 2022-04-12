@@ -1,5 +1,6 @@
 import { Gyms } from "./gyms";
 import { ILocation } from "./interfaces/smart-fit-representations";
+import { ILocationAddOns } from "./interfaces/smart-fit-representations/location";
 
 describe("Parsing Smart Fit Raw JSON", () => {
     let locations: ILocation[] = []
@@ -154,10 +155,30 @@ describe("Gym Indexation", () => {
 })
 
 describe("Additional Gym Information", () => {
+
+    let additional: ILocationAddOns
+
     test("Get additional information about the gym", async () => {
         let gym = Object.values(await Gyms.getData())[0]
-        expect(await Gyms.getRawGymAdditionalProperties(gym.permalink)).not.toBeUndefined()
+        additional = (await Gyms.getRawGymAdditionalProperties(gym.permalink)) as ILocationAddOns
+        expect(additional).not.toBeUndefined()
     }, 100000)
+
+    test("Get cnpj property", async () => {
+        expect(additional.cnpj).not.toBeUndefined()
+    })
+
+    test("Get images uri property", async () => {
+        expect(additional.locationPictures).not.toBeUndefined()
+        expect(additional.locationPictures.length).toBeGreaterThanOrEqual(0)
+    })
+
+    test("Get trainer property", async () => {
+        expect(additional.staffData).not.toBeUndefined()
+        expect(additional.staffData.trainers).not.toBeUndefined()
+        expect(additional.staffData.trainers.length).toBeGreaterThanOrEqual(0)
+    })
+    
 })
 
 describe("Parsing Additional Gym Information", () => {

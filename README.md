@@ -275,6 +275,26 @@ let gyms: [index: string]: Gym } = await Gyms.getData()
     | updated_at       | Update date.             |
     | current_shard    | fragment information.    |
 
+    * ### ITrainer
+
+    Representation of an gym employee.
+
+    ```ts
+    interface ITrainer {
+        name: string
+        picture: any
+        role: string
+        cref: string
+    }
+    ```
+
+    |    Property      |        Description       |
+    |:----------------:|:------------------------:|
+    | name             | Employee name.           | 
+    | picture          | URI with employee photo. |
+    | role             | Employee work.           |
+    | cref             | Registration at CREF.    |
+
 * ### Refactored models
 
     These interfaces were created from the extracted data, they contain a leaner representation of the data
@@ -284,7 +304,7 @@ let gyms: [index: string]: Gym } = await Gyms.getData()
     Representation of an gym.
 
     ```ts
-    export interface IGym{
+    interface IGym{
         name: string
         permalink: string
         id: number

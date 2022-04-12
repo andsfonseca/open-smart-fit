@@ -3,6 +3,7 @@ import { IFacility } from "./facility"
 import { ILocationPicture } from "./location-picture"
 import { IPrice } from "./price"
 import { IScheduledDays } from "./scheduled-day"
+import { ITrainer } from "./trainer"
 
 /**
  * Representação de uma academia
@@ -72,13 +73,6 @@ export interface ILocation {
      * Possui plano diginal
      */
     is_digital: boolean
-}
-
-export interface ITrainer {
-    name: string
-    picture: any
-    role: string
-    cref: string
 }
 
 interface IStaffData {
