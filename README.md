@@ -173,8 +173,8 @@ let gyms: [index: string]: Gym } = await Gyms.getData()
 
     |    Property     |                           Description                        |
     |:---------------:|:------------------------------------------------------------:|
-    | first_line      | First line of the address (Street, number and neighborhood). | 
-    | second_line     | Second line of address (City, state, zip code).              |
+    | first_line      | First line of the address (street, number and neighborhood). | 
+    | second_line     | Second line of address (city, state, zip code).              |
     | position        | Geographic coordinates.                                      |
 
     * ### ICoordinates
@@ -290,11 +290,32 @@ let gyms: [index: string]: Gym } = await Gyms.getData()
 
     |  Property   |                           Description                         |
     |:-----------:|:-------------------------------------------------------------:|
-    | lat         | Latitude.                                                     | 
+    | lat         | Latitude.                                                     |
     | lon         | Longitude.                                                    |
-    | full        | Complete Address (Street, number, neighborhood, City, State). |
+    | full        | Complete address (street, number, neighborhood, city, state). |
     | postalCode  | Zip code.                                                     |
 
+    * ### ISchedule
+
+    Representation of opening hours.
+
+    ```ts
+    interface ISchedule{
+        dayOfTheWeek: number
+        opensAs: number
+        closesAs: number
+    }
+    ```
+
+    |  Property    |                           Description                         |
+    |:------------:|:-------------------------------------------------------------:|
+    | dayOfTheWeek | **Day of the week in numeric format***                         | 
+    | opensAs      | Opening time.                                                 |
+    | closesAs     | Closing time.                                                 |
+
+
+    >  *Sunday and Holidays: 1; Monday: 2; Tuesday: 3; Wednesday: 4, Thursday: 5, Friday: 6; Saturday: 7.
+    
 ## Issues
 
 Feel free to submit issues and enhancement requests.

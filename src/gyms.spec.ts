@@ -109,4 +109,12 @@ describe("Models", () => {
         expect(gym.address.postalCode).not.toBeUndefined()
     })
 
+    test("Get schedule property", async () => {
+        let gym = Object.values(await Gyms.getData())[0]
+        expect(gym.schedules.length).toBe(7)
+        expect(gym.schedules[0].dayOfTheWeek).not.toBeUndefined()
+        expect(gym.schedules[0].opensAs).not.toBeUndefined()
+        expect(gym.schedules[0].closesAs).not.toBeUndefined()
+    })
+
 })

@@ -1,10 +1,5 @@
 import { IAddress } from "./iaddress"
-
-export interface ISchedule{
-    dayOfTheWeek: number
-    opensAs: number
-    closesAs: number
-}
+import { ISchedule } from "./ischedule"
 
 export interface IPrice{
     name: string
