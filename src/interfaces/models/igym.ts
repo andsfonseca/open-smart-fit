@@ -1,10 +1,6 @@
 import { IAddress } from "./iaddress"
+import { IPrice } from "./iprice"
 import { ISchedule } from "./ischedule"
-
-export interface IPrice{
-    name: string
-    price: number
-}
 
 export interface IGym{
     name: string

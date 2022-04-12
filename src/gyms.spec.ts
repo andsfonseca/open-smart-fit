@@ -117,4 +117,10 @@ describe("Models", () => {
         expect(gym.schedules[0].closesAs).not.toBeUndefined()
     })
 
+    test("Get price property", async () => {
+        let gym = Object.values(await Gyms.getData())[0]
+        expect(gym.prices).not.toBeUndefined()
+        expect(gym.prices.length).toBeGreaterThanOrEqual(0)
+    })
+
 })

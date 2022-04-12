@@ -309,13 +309,28 @@ let gyms: [index: string]: Gym } = await Gyms.getData()
 
     |  Property    |                           Description                         |
     |:------------:|:-------------------------------------------------------------:|
-    | dayOfTheWeek | **Day of the week in numeric format***                         | 
+    | dayOfTheWeek | **Day of the week in numeric format***                        | 
     | opensAs      | Opening time.                                                 |
     | closesAs     | Closing time.                                                 |
 
-
     >  *Sunday and Holidays: 1; Monday: 2; Tuesday: 3; Wednesday: 4, Thursday: 5, Friday: 6; Saturday: 7.
-    
+
+    * ### IPrice
+
+    Gym pricing information.
+
+    ```ts
+    interface IPrice{
+        name: string
+        price: number
+    }
+    ```
+
+    |  Property    |    Description       |
+    |:------------:|:--------------------:|
+    | name         | Plan/Product Name.   | 
+    | price        | Price in float.    |
+
 ## Issues
 
 Feel free to submit issues and enhancement requests.
