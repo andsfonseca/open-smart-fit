@@ -1,6 +1,7 @@
-import { IAddress } from "./iaddress"
-import { IPrice } from "./iprice"
-import { ISchedule } from "./ischedule"
+import { IAdditionalInformation } from "./additional-information"
+import { IAddress } from "./address"
+import { IPrice } from "./price"
+import { ISchedule } from "./schedule"
 
 export interface IGym{
     name: string
@@ -15,8 +16,5 @@ export interface IGym{
     additionalInformation?: IAdditionalInformation
 }
 
-export interface IAdditionalInformation{
-    cnpj : string
-    imagesUri: string[]
-}
+
 

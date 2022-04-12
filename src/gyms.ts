@@ -3,7 +3,7 @@ import { API_URL } from "./common/urls";
 import { ILocation, IPagination } from "./interfaces/smart-fit-representations";
 import { ILocationAddOns } from "./interfaces/smart-fit-representations/location";
 import { Gym } from "./models/gym";
-import { IAdditionalInformation } from "./interfaces/models/igym";
+import { IAdditionalInformation } from "./interfaces/models";
 import he from "he"
 
 /**

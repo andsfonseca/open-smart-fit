@@ -2,9 +2,8 @@ import { Gyms } from "./gyms";
 import { ILocation } from "./interfaces/smart-fit-representations";
 
 describe("Parsing Smart Fit Raw JSON", () => {
-
     let locations: ILocation[] = []
-
+    
     test("Fetching data", async () => {
         try {
             locations = await Gyms.getRawData()
@@ -90,8 +89,7 @@ describe("Parsing Smart Fit Raw JSON", () => {
 
 })
 
-describe("Models", () => {
-
+describe("Gym Indexation", () => {
     test("Fetching data", async () => {
         try {
             expect(await Gyms.getData()).not.toBeUndefined()
@@ -123,4 +121,29 @@ describe("Models", () => {
         expect(gym.prices.length).toBeGreaterThanOrEqual(0)
     })
 
+})
+
+describe("Additional Gym Information", () => {
+    test("Get additional information about the gym", async () => {
+        let gym = Object.values(await Gyms.getData())[0]
+        expect(await Gyms.getRawGymAdditionalProperties(gym.permalink)).not.toBeUndefined()
+    }, 100000)
+})
+
+describe("Parsing Additional Gym Information", () => {
+    test("Get additional information about the gym", async () => {
+        let gym = Object.values(await Gyms.getData())[0]
+        expect(await Gyms.getGymAdditionalProperties(gym.permalink)).not.toBeUndefined()
+    }, 100000)
+
+    test("Get cnpj property", async () => {
+        let gym = Object.values(await Gyms.getData())[0]
+        expect(await gym.cnpj).not.toBeUndefined()
+    })
+
+    test("Get images uri property", async () => {
+        let gym = Object.values(await Gyms.getData())[0]
+        expect(await gym.imagesUri).not.toBeUndefined()
+        expect((await gym.imagesUri).length).toBeGreaterThan(0)
+    })
 })

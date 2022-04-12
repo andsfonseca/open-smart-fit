@@ -329,8 +329,24 @@ let gyms: [index: string]: Gym } = await Gyms.getData()
     |  Property    |    Description       |
     |:------------:|:--------------------:|
     | name         | Plan/Product Name.   | 
-    | price        | Price in float.    |
+    | price        | Price in float.      |
 
+    * ### IAdditionalInformation
+
+    Additional gym information
+
+    ```ts
+    interface IAdditionalInformation{
+        cnpj : string
+        imagesUri: string[]
+    }
+    ```
+
+    |  Property    |                 Description                |
+    |:------------:|:------------------------------------------:|
+    | cnpj         | National Register of Legal entity (CNPJ)   | 
+    | imagesUri    | URI with gym photos                        |
+    
 ## Issues
 
 Feel free to submit issues and enhancement requests.
