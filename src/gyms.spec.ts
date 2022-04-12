@@ -98,6 +98,26 @@ describe("Gym Indexation", () => {
         }
     }, 100000)
 
+    test("Get name property", async () => {
+        let gym = Object.values(await Gyms.getData())[0]
+        expect(gym.name).not.toBeUndefined()
+    })
+
+    test("Get permalink property", async () => {
+        let gym = Object.values(await Gyms.getData())[0]
+        expect(gym.permalink).not.toBeUndefined()
+    })
+
+    test("Get id property", async () => {
+        let gym = Object.values(await Gyms.getData())[0]
+        expect(gym.id).not.toBeUndefined()
+    })
+
+    test("Get Smart System id property", async () => {
+        let gym = Object.values(await Gyms.getData())[0]
+        expect(gym.smartSystemId).not.toBeUndefined()
+    })
+
     test("Get address property", async () => {
         let gym = Object.values(await Gyms.getData())[0]
         expect(gym.address).not.toBeUndefined()
@@ -107,7 +127,12 @@ describe("Gym Indexation", () => {
         expect(gym.address.postalCode).not.toBeUndefined()
     })
 
-    test("Get schedule property", async () => {
+    test("Get facilities property", async () => {
+        let gym = Object.values(await Gyms.getData())[0]
+        expect(gym.facilities).not.toBeUndefined()
+    })
+
+    test("Get schedules property", async () => {
         let gym = Object.values(await Gyms.getData())[0]
         expect(gym.schedules.length).toBe(7)
         expect(gym.schedules[0].dayOfTheWeek).not.toBeUndefined()
@@ -119,6 +144,11 @@ describe("Gym Indexation", () => {
         let gym = Object.values(await Gyms.getData())[0]
         expect(gym.prices).not.toBeUndefined()
         expect(gym.prices.length).toBeGreaterThanOrEqual(0)
+    })
+
+    test("Get plans property", async () => {
+        let gym = Object.values(await Gyms.getData())[0]
+        expect(gym.plans).not.toBeUndefined()
     })
 
 })

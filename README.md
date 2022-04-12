@@ -22,11 +22,15 @@ Each information is represented as general or additional. General information is
 
 |       Property    |    Type            |    Implemented            |
 |:--------------------:|:-------------------------:|:-----------:|
+| name                 | general       | ✅ Yes.       | 
+| permalink                 | general       | ✅ Yes.       | 
 | id                 | general       | ✅ Yes.       | 
-| price                 | general       | ✅ Yes.       | 
+| smart system id                 | general       | ✅ Yes.       | 
 | address                 | general       | ✅ Yes.       | 
 | facilities                 | general       | ✅ Yes.       | 
 | schedules                 | general       | ✅ Yes.       | 
+| price                 | general       | ✅ Yes.       | 
+| plans                 | general       | ✅ Yes.       | 
 | cnpj                 | additional       | ✅ Yes.       | 
 | imagesUri                 | additional       | ✅ Yes.       | 
 
@@ -274,6 +278,38 @@ let gyms: [index: string]: Gym } = await Gyms.getData()
 * ### Refactored models
 
     These interfaces were created from the extracted data, they contain a leaner representation of the data
+
+    * ### IGym
+
+    Representation of an gym.
+
+    ```ts
+    export interface IGym{
+        name: string
+        permalink: string
+        id: number
+        smartSystemId: number,
+        address: IAddress,
+        facilities: string[],
+        schedules: ISchedule[],
+        prices: IPrice[]
+        plans: string[],
+        additionalInformation?: IAdditionalInformation
+    }
+    ```
+
+    |    Property            |                  Description                 |
+    |:----------------------:|:--------------------------------------------:|
+    | name                   | Gym name.                                    |
+    | permalink              | Unique identifier of the gym, in string.     |
+    | id                     | gym identifier.                              |
+    | smartSystemId          | Smart System identifier.                     |
+    | address                | Gym address.                                 |
+    | facilities             | Resources available at the gym.              |
+    | schedules              | Gym hours.                                   |
+    | prices                 | Gym prices.                                  |
+    | plans                  | Available plans.                             |
+    | additionalInformation  | Additional gym information.                  |
 
     * ### IAddress
 
