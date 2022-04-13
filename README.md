@@ -33,6 +33,7 @@ Each information is represented as general or additional. General information is
 | plans                 | general       | ✅ Yes.       | 
 | cnpj                 | additional       | ✅ Yes.       | 
 | imagesUri                 | additional       | ✅ Yes.       | 
+| employees                 | additional       | ✅ Yes.       | 
 
 
 ## Usage
@@ -395,13 +396,35 @@ let gyms: [index: string]: Gym } = await Gyms.getData()
     interface IAdditionalInformation{
         cnpj : string
         imagesUri: string[]
+        employees: IEmployee[]
     }
     ```
 
     |  Property    |                 Description                |
     |:------------:|:------------------------------------------:|
-    | cnpj         | National Register of Legal entity (CNPJ)   | 
-    | imagesUri    | URI with gym photos                        |
+    | cnpj         | National Register of Legal entity (CNPJ).  | 
+    | imagesUri    | URI with gym photos.                       |
+    | employees    | gym employees.                             |
+
+    * ### IEmployee
+
+    Representation of the gym employee
+
+    ```ts
+    interface IEmployee {
+        name: string
+        job: string
+        cref: string | null
+        profilePictureUri: string | null
+    }
+    ```
+
+    |       Property       |          Description                |
+    |:--------------------:|:-----------------------------------:|
+    | name                 | Employee name.                      | 
+    | job                  | Employee job.                       |
+    | cref                 | CREF, if any.                       |
+    | profilePictureUri    | URI with the employee's photo.      |
     
 ## Issues
 

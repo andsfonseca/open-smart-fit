@@ -1,5 +1,5 @@
 import { Gyms } from "../gyms";
-import { IGym, IAddress, ISchedule, IPrice, IAdditionalInformation } from "../interfaces/models";
+import { IGym, IAddress, ISchedule, IPrice, IAdditionalInformation, IEmployee } from "../interfaces/models";
 
 export class Gym implements IGym {
 
@@ -16,6 +16,7 @@ export class Gym implements IGym {
     
     cnpj!: Promise<string>;
     imagesUri!: Promise<string[]>;
+    employees!: Promise<IEmployee[]>;
     
     constructor(name: string, permalink: string, id: number, smartSystemId: number, address: IAddress, facilities: string[], schedules: ISchedule[], prices: IPrice[], plans: string[]) {
         
@@ -49,6 +50,17 @@ export class Gym implements IGym {
                 await Gyms.getGymAdditionalProperties(this.permalink)
 
                 return this.additionalInformation.imagesUri
+            }
+         });
+
+         Object.defineProperty(this, "employees",{
+            get: async function (){
+                if(this.additionalInformation){
+                    return this.additionalInformation.employees
+                }
+                await Gyms.getGymAdditionalProperties(this.permalink)
+
+                return this.additionalInformation.employees
             }
          });
     }

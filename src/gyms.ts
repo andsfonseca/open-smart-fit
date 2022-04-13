@@ -176,7 +176,15 @@ export abstract class Gyms {
 
         this.data[permalink].additionalInformation = {
             cnpj: data.cnpj,
-            imagesUri: data.locationPictures.map(lp => lp.image_url)
+            imagesUri: data.locationPictures.map(lp => lp.image_url),
+            employees: data.staffData.trainers.map(t => {
+                return {
+                    name: t.name,
+                    cref: t.cref,
+                    job: t.role,
+                    profilePictureUri: t.picture
+                }
+            })
         }
 
         return this.data[permalink].additionalInformation;

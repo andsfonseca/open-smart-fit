@@ -197,4 +197,10 @@ describe("Parsing Additional Gym Information", () => {
         expect(await gym.imagesUri).not.toBeUndefined()
         expect((await gym.imagesUri).length).toBeGreaterThan(0)
     })
+
+    test("Get employees property", async () => {
+        let gym = Object.values(await Gyms.getData())[0]
+        expect(await gym.employees).not.toBeUndefined()
+        expect((await gym.employees).length).toBeGreaterThan(0)
+    })
 })
